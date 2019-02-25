@@ -2,7 +2,7 @@
 
 This is some no-bs public exploit code that generates valid shellcode for the eternal blue exploit and scripts out the event listener with the metasploit multi-handler.
 
-This version of the exploit is prepared in a way where you can exploit eternal blue WITHOUT metasploit. Your options for auto shell generation are to generate shellcode with msfvenom that has meterpreter (i.e. with metasploit) or to generate a normal windows cmd shell (i.e. without metasploit). Alternatively you can elect to brew in your own shellcode.
+This version of the exploit is prepared in a way where you can exploit eternal blue WITHOUT metasploit. Your options for auto shell generation are to generate shellcode with msfvenom that has meterpreter (i.e. with metasploit) or to generate a normal windows cmd shell (i.e. without metasploit). You may also select between staged and stageless payloads if you wish to avoid utilizing the msfconsole entirely and use netcat/your own shell handler. Alternatively you can elect to brew in your own shellcode.
 
 This allows for this version of the MS17-010 exploit to be a bit more flexible, and also fully functional, as many exploits leave out the steps to compile the kernel shellcode that usually comes with it.
 
@@ -12,10 +12,7 @@ run `python eternalblue_checker.py <TARGET-IP>`
 
 
 ## TODO:
-1. Testing on specfic Windows 10 builds
-2. Testing with stageless payload
-3. Testing with non-msfvenom shellcode
-4. Resolving any open issues
+1. Testing with non-msfvenom shellcode
 
 ## VIDEO TUTORIAL:
 https://www.youtube.com/watch?v=p9OnxS1oDc0
@@ -79,9 +76,13 @@ Starting listener...
 ## PWN:
 If you have completed the USAGE steps, now you're ready to PWN the target.
 
-run `python eternalblue_exploit7.py <TARGET-IP> <PATH/TO/SHELLCODE/sc_all.bin> <Number of Groom Connections (optional)>`
+run:
 
-This has only been tested on Windows 7/Server 2008, however the exploit included in this repo also includes the Windows 8 version and *should* work.
+`python eternalblue_exploit7.py <TARGET-IP> <PATH/TO/SHELLCODE/sc_all.bin> <Number of Groom Connections (optional)>`
+
+This has only been tested on Windows 7/Server 2008, and Windows 10 10240 (x64) 
+
+However the exploit included in this repo also includes the Windows 8/Server 2012 version and *should* work.
 
 
 The original exploit code that this repo pulls from is located here: https://github.com/worawit/MS17-010
